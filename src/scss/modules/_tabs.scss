@@ -1,7 +1,11 @@
 .tabs {
     .tab-header-wrap {
-        display: flex;
         padding: 0 1px;
+        display: none;
+
+        @media (min-width: $tablet-min) {
+            display: flex;
+        }
     }
 
     .tab-header {
@@ -19,6 +23,14 @@
             &:hover {
                 color: $c-highlight;
             }
+        }
+    }
+
+    .tab-select-wrap {
+        display: flex;
+
+        @media (min-width: $tablet-min) {
+            display: none;
         }
     }
 

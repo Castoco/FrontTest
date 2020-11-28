@@ -1,0 +1,48 @@
+{
+  "name": "front-Test",
+  "private": true,
+  "description": "Tets Task Tiurin E.N",
+  "devDependencies": {
+    "autoprefixer": "9.8.4",
+    "browser-sync": "^2.26.12",
+    "eslint": "^7.1.0",
+    "eslint-config-htmlacademy": "^0.6.0",
+    "gulp": "4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-plumber": "1.2.1",
+    "gulp-postcss": "8.0.0",
+    "gulp-posthtml": "^3.0.5",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^2.0.0",
+    "node-sass": "^5.0.0",
+    "pixel-glass": "^1.0.13",
+    "stylelint": "13.6.1",
+    "stylelint-config-htmlacademy": "0.1.4"
+  },
+  "scripts": {
+    "editorconfig": "editorconfig-cli",
+    "test": "gulp",
+    "start": "gulp build"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "editorconfig-cli": [
+    "*.json",
+    "*.js",
+    "src/*.html",
+    "src/js/**/*.js"
+  ],
+  "engines": {
+    "node": "12.18.2"
+  },
+  "dependencies": {
+    "del": "^5.1.0",
+    "jquery": "^3.5.1"
+  }
+}
