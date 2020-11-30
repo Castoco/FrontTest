@@ -34,8 +34,38 @@
         }
     }
 
+    .tab-image-wraper,
+    .tab-photo-wraper {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+      @media (min-width: $desktop-min) {
+          height: 500px;
+          margin: 0 auto;
+      }
+      @media (min-width: $tablet-min) {
+        height: 400px;
+    }
+      @media (max-width: $mobile-max) {
+        height: 300px;
+    }
+      img {
+          max-width: none;
+      }
+    }
+
     .tab-content-wrap {
         border: 1px solid $c-border;
+    }
+    .tab-moving {
+        cursor: move;
+        position: absolute;
+    }
+
+    .tab-scale {
+       position: absolute;
+       top:0px;
+       left: 0px;
     }
 
     .tab-content {
