@@ -28,6 +28,8 @@
 
     .tab-select-wrap {
         display: flex;
+        width: 100%;
+        padding: 10px;
 
         @media (min-width: $tablet-min) {
             display: none;
