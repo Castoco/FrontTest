@@ -11,7 +11,7 @@ const del = require("del");
 const htmlmin = require('gulp-htmlmin');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
-
+const imagemin = require('gulp-imagemin');
 
 
 // Styles
@@ -60,12 +60,12 @@ exports.html = html;
 // Watcher
 
 const watcher = () => {
-  gulp.watch("src/scss/**/*.scss", gulp.series("styles"));
+  gulp.watch("src/scss/**/*.scss", gulp.series("styles")).on("change", sync.reload);
   gulp.watch("src/*.html", gulp.series("html")).on("change", sync.reload);
 }
 
 exports.default = gulp.series(
-  styles, html, server, watcher
+  styles, scripts, html, server, watcher
 );
 
 //htmlmin
@@ -78,10 +78,12 @@ const minhtml = () => {
 
 //js min
 
-const compress = () => {
+const scripts = () => {
   return gulp.src('./src/js/*.js')
+  .pipe(sourcemap.init())
     .pipe(uglify())
     .pipe(concat('scripts.min.js'))
+  .pipe(sourcemap.write(''))
     .pipe(gulp.dest('dist/js'));
 };
 
@@ -95,11 +97,23 @@ const vendors = () => {
 
 exports.vendors = vendors;
 
+// images
+
+const images = () => {
+    return gulp.src("src/img/**/*.{jpg,png,svg}")
+      .pipe(imagemin([
+        imagemin.optipng({optimizationLevel: 4}),
+        imagemin.mozjpeg({progressive: true}),
+        imagemin.svgo()
+  ]))
+    .pipe(gulp.dest('dist/img'))
+}
+
 const clean = () => {
 return del(["dist"]);
 };
 
 exports.clean = clean;
 
-const build = gulp.series(clean, vendors, styles, minhtml, compress, vendors, server);
+const build = gulp.series(clean, styles, minhtml, scripts, vendors, images, server);
 exports.build = build;
